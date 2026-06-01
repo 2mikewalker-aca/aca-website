@@ -3,43 +3,12 @@ export default function Home() {
     <main className="page">
       <style>{`
         * { box-sizing: border-box; }
-        body { margin: 0; }
-        .page { font-family: Arial, sans-serif; color: #111827; }
-        .header {
-          position: sticky;
-          top: 0;
-          z-index: 50;
-          background: rgba(255,255,255,.97);
-          border-bottom: 1px solid #e5e7eb;
-        }
-        .nav {
-          max-width: 1180px;
-          margin: 0 auto;
-          padding: 22px 24px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 20px;
-        }
-        .brand {
-          font-size: 22px;
-          font-weight: 800;
-          line-height: 1.1;
+
+        .page {
+          font-family: Arial, sans-serif;
           color: #111827;
-          text-decoration: none;
-          max-width: 260px;
         }
-        .links {
-          display: flex;
-          gap: 22px;
-          font-size: 16px;
-          align-items: center;
-        }
-        .links a {
-          color: #111827;
-          text-decoration: none;
-          font-weight: 600;
-        }
+
         .hero {
           min-height: calc(100vh - 90px);
           color: white;
@@ -51,11 +20,13 @@ export default function Home() {
           background-size: cover;
           background-position: center;
         }
+
         .heroInner {
           max-width: 1180px;
           margin: 0 auto;
           padding: 90px 24px;
         }
+
         .eyebrow {
           color: #93c5fd;
           text-transform: uppercase;
@@ -63,18 +34,21 @@ export default function Home() {
           font-size: 14px;
           font-weight: 700;
         }
+
         h1 {
           font-size: clamp(42px, 8vw, 78px);
           line-height: .98;
           max-width: 900px;
           margin: 22px 0;
         }
+
         .subhead {
           font-size: clamp(20px, 4vw, 28px);
           line-height: 1.45;
           color: #dbeafe;
           max-width: 820px;
         }
+
         .button {
           display: inline-block;
           margin-top: 34px;
@@ -86,10 +60,12 @@ export default function Home() {
           font-weight: 800;
           font-size: 17px;
         }
+
         .quick {
           background: #f8fafc;
           padding: 55px 24px;
         }
+
         .quickInner {
           max-width: 1180px;
           margin: 0 auto;
@@ -97,58 +73,30 @@ export default function Home() {
           grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
           gap: 18px;
         }
+
         .card {
           background: white;
           border: 1px solid #e5e7eb;
           border-radius: 16px;
           padding: 26px;
         }
+
         .card h3 {
           margin-top: 0;
           font-size: 21px;
         }
+
         .card p {
           color: #4b5563;
           line-height: 1.6;
         }
-        .footer {
-          padding: 30px 24px;
-          text-align: center;
-          color: #6b7280;
-          font-size: 14px;
-        }
 
         @media (max-width: 700px) {
-          .nav {
-            align-items: flex-start;
-          }
-          .brand {
-            font-size: 18px;
-          }
-          .links {
-            gap: 12px;
-            font-size: 14px;
-          }
           .heroInner {
             padding: 70px 24px;
           }
         }
       `}</style>
-
-      <header className="header">
-        <div className="nav">
-          <a className="brand" href="/">
-            Asset Condition Advisors
-          </a>
-
-          <nav className="links">
-            <a href="/services">Services</a>
-            <a href="/about">About</a>
-            <a href="/why-us">Why Us</a>
-            <a href="/request">Request</a>
-          </nav>
-        </div>
-      </header>
 
       <section className="hero">
         <div className="heroInner">
@@ -199,10 +147,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <footer className="footer">
-        © 2026 Asset Condition Advisors. Serving Northern California.
-      </footer>
     </main>
   );
 }
