@@ -9,7 +9,7 @@ export default function Home() {
           position: sticky;
           top: 0;
           z-index: 50;
-          background: rgba(255,255,255,.95);
+          background: rgba(255,255,255,.97);
           border-bottom: 1px solid #e5e7eb;
         }
         .nav {
@@ -25,12 +25,15 @@ export default function Home() {
           font-size: 22px;
           font-weight: 800;
           line-height: 1.1;
+          color: #111827;
+          text-decoration: none;
           max-width: 260px;
         }
         .links {
           display: flex;
           gap: 22px;
           font-size: 16px;
+          align-items: center;
         }
         .links a {
           color: #111827;
@@ -134,7 +137,10 @@ export default function Home() {
 
       <header className="header">
         <div className="nav">
-          <div className="brand">Asset Condition Advisors</div>
+          <a className="brand" href="/">
+            Asset Condition Advisors
+          </a>
+
           <nav className="links">
             <a href="/services">Services</a>
             <a href="/about">About</a>
@@ -146,12 +152,18 @@ export default function Home() {
 
       <section className="hero">
         <div className="heroInner">
-          <div className="eyebrow">Independent Property Condition Assessments</div>
+          <div className="eyebrow">
+            Independent Property Condition Assessments
+          </div>
 
-          <h1>Identify maintenance concerns before they become costly repairs.</h1>
+          <h1>
+            Identify maintenance concerns before they become costly repairs.
+          </h1>
 
           <p className="subhead">
-            Asset Condition Advisors helps owners, managers, investors, and associations evaluate visible property conditions, prioritize maintenance, and plan with confidence.
+            Asset Condition Advisors helps owners, managers, investors, and
+            associations evaluate visible property conditions, prioritize
+            maintenance, and plan with confidence.
           </p>
 
           <a className="button" href="/request">
@@ -164,17 +176,26 @@ export default function Home() {
         <div className="quickInner">
           <div className="card">
             <h3>Property Assessments</h3>
-            <p>Visual review of building components, site conditions, and maintenance concerns.</p>
+            <p>
+              Visual review of building components, site conditions, and
+              maintenance concerns.
+            </p>
           </div>
 
           <div className="card">
             <h3>Maintenance Planning</h3>
-            <p>Prioritize repair needs and organize findings into practical planning categories.</p>
+            <p>
+              Prioritize repair needs and organize findings into practical
+              planning categories.
+            </p>
           </div>
 
           <div className="card">
             <h3>Due Diligence Support</h3>
-            <p>Independent property condition observations for purchases, investments, and ownership decisions.</p>
+            <p>
+              Independent property condition observations for purchases,
+              investments, and ownership decisions.
+            </p>
           </div>
         </div>
       </section>
