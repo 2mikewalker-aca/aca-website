@@ -52,11 +52,15 @@ export default function RequestPage() {
           gap: 32px;
         }
 
-        .infoBox {
+        .infoBox,
+        .formBox {
           background: white;
           border: 1px solid #e5e7eb;
           border-radius: 18px;
           padding: 28px;
+        }
+
+        .infoBox {
           height: fit-content;
         }
 
@@ -65,22 +69,10 @@ export default function RequestPage() {
           font-size: 26px;
         }
 
-        .infoBox p {
+        .infoBox p,
+        .infoBox ul {
           color: #4b5563;
           line-height: 1.7;
-        }
-
-        .infoBox ul {
-          padding-left: 20px;
-          color: #4b5563;
-          line-height: 1.8;
-        }
-
-        .formBox {
-          background: white;
-          border: 1px solid #e5e7eb;
-          border-radius: 18px;
-          padding: 28px;
         }
 
         .formGrid {
@@ -160,14 +152,18 @@ export default function RequestPage() {
         </div>
 
         <div className="formBox">
-          <form className="formGrid">
-            <input placeholder="Name" />
-            <input placeholder="Company / Organization" />
-            <input placeholder="Email" />
-            <input placeholder="Phone (optional)" />
-            <input placeholder="Property Address" />
+          <form
+            className="formGrid"
+            action="https://script.google.com/macros/s/AKfycbyvjxZLLIKxI636GTQ5p5_-2WAZ6FEd_ahvwS8ef1pPYTtFfcbGPLzv8rj7W1vS4WKk7w/exec"
+            method="POST"
+          >
+            <input name="name" placeholder="Name" required />
+            <input name="company" placeholder="Company / Organization" />
+            <input name="email" type="email" placeholder="Email" required />
+            <input name="phone" placeholder="Phone (optional)" />
+            <input name="propertyAddress" placeholder="Property Address" />
 
-            <select defaultValue="">
+            <select name="serviceRequested" defaultValue="" required>
               <option value="" disabled>
                 Service Requested
               </option>
@@ -178,7 +174,7 @@ export default function RequestPage() {
               <option>General Inquiry</option>
             </select>
 
-            <select defaultValue="">
+            <select name="propertyType" defaultValue="">
               <option value="" disabled>
                 Property Type
               </option>
@@ -191,18 +187,17 @@ export default function RequestPage() {
             </select>
 
             <textarea
+              name="message"
               rows={6}
               placeholder="Briefly describe the property, concern, or request"
             />
 
-            <button type="button" className="submit">
+            <button type="submit" className="submit">
               Submit Request
             </button>
 
             <p className="note">
-              Form submission connection is being configured. Once connected,
-              requests will be routed privately without displaying a public email
-              address or phone number on the website.
+              Your request will be submitted privately through the website.
             </p>
           </form>
         </div>
