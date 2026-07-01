@@ -4,10 +4,12 @@ import { useState } from "react";
 
 export default function RequestPage() {
   const [status, setStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setStatus("Submitting your request...");
+    setStatus("Submitting request. Please wait...");
+    setIsSubmitting(true);
 
     const form = event.currentTarget;
     const formData = new FormData(form);
@@ -23,9 +25,13 @@ export default function RequestPage() {
       );
 
       form.reset();
-      setStatus("Thank you. Your request has been submitted.");
+      setStatus(
+        "Thank you! Your assessment request has been received. A representative from Asset Condition Advisors will review your request and respond shortly."
+      );
     } catch (error) {
       setStatus("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   }
 
@@ -135,6 +141,11 @@ export default function RequestPage() {
           cursor: pointer;
         }
 
+        .submit:disabled {
+          opacity: 0.65;
+          cursor: not-allowed;
+        }
+
         .success {
           margin-top: 16px;
           padding: 16px;
@@ -143,6 +154,7 @@ export default function RequestPage() {
           color: #065f46;
           font-weight: 700;
           border: 1px solid #a7f3d0;
+          line-height: 1.5;
         }
 
         .note {
@@ -228,8 +240,8 @@ export default function RequestPage() {
               placeholder="Briefly describe the property, concern, or request"
             />
 
-            <button type="submit" className="submit">
-              Submit Request
+            <button type="submit" className="submit" disabled={isSubmitting}>
+              {isSubmitting ? "Submitting..." : "Submit Request"}
             </button>
 
             {status && <div className="success">{status}</div>}
