@@ -1,4 +1,34 @@
+"use client";
+
+import { useState } from "react";
+
 export default function RequestPage() {
+  const [status, setStatus] = useState("");
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus("Submitting your request...");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbyvjxZLLIKxI636GTQ5p5_-2WAZ6FEd_ahvwS8ef1pPYTtFfcbGPLzv8rj7W1vS4WKk7w/exec",
+        {
+          method: "POST",
+          body: formData,
+          mode: "no-cors",
+        }
+      );
+
+      form.reset();
+      setStatus("Thank you. Your request has been submitted.");
+    } catch (error) {
+      setStatus("Something went wrong. Please try again.");
+    }
+  }
+
   return (
     <main className="requestPage">
       <style>{`
@@ -105,6 +135,16 @@ export default function RequestPage() {
           cursor: pointer;
         }
 
+        .success {
+          margin-top: 16px;
+          padding: 16px;
+          border-radius: 10px;
+          background: #ecfdf5;
+          color: #065f46;
+          font-weight: 700;
+          border: 1px solid #a7f3d0;
+        }
+
         .note {
           margin-top: 14px;
           font-size: 14px;
@@ -152,11 +192,7 @@ export default function RequestPage() {
         </div>
 
         <div className="formBox">
-          <form
-            className="formGrid"
-            action="https://script.google.com/macros/s/AKfycbyvjxZLLIKxI636GTQ5p5_-2WAZ6FEd_ahvwS8ef1pPYTtFfcbGPLzv8rj7W1vS4WKk7w/exec"
-            method="POST"
-          >
+          <form className="formGrid" onSubmit={handleSubmit}>
             <input name="name" placeholder="Name" required />
             <input name="company" placeholder="Company / Organization" />
             <input name="email" type="email" placeholder="Email" required />
@@ -195,6 +231,8 @@ export default function RequestPage() {
             <button type="submit" className="submit">
               Submit Request
             </button>
+
+            {status && <div className="success">{status}</div>}
 
             <p className="note">
               Your request will be submitted privately through the website.
